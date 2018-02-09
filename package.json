@@ -4,7 +4,9 @@
   "description": "react project comparing github profiles",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "watch": "webpack-dev-server"
   },
   "babel": {
     "presets": ["env", "react"]
