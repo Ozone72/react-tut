@@ -1,6 +1,6 @@
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var webpackDashboard = require('weback-dashboard/plugin');
+var webpackDashboard = require('webpack-dashboard/plugin');
 
 module.exports = {
     entry: './app/index.js',
