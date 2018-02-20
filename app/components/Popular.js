@@ -1,4 +1,45 @@
 var React = require("react");
+var PropTypes = require("prop-types");
+
+class SelectLanguage extends React.Component {
+  render() {
+    var languages = [
+      "All",
+      "JavaScript",
+      "Python",
+      "Ruby",
+      "Go",
+      "C#",
+      "Rust",
+      "CSS"
+    ];
+    return (
+      <ul className="languages">
+        {languages.map(function(lang) {
+          return (
+            //  have to use .bind to pass lang to initial function
+            <li
+              style={
+                lang === this.props.selectedLanguage
+                  ? { color: "#EC53FF" }
+                  : null
+              }
+              onClick={this.props.onSelect.bind(null, lang)}
+              key={lang}
+            >
+              {lang}
+            </li>
+          );
+        }, this)}
+      </ul>
+    );
+  }
+}
+
+SelectLanguage.propTypes = {
+  selectedLanguage: PropTypes.string.isRequired,
+  onSelect: PropTypes.func.isRequired
+};
 
 class Popular extends React.Component {
   //   adding a constructor to the class that sets initial state of the component
@@ -19,36 +60,13 @@ class Popular extends React.Component {
   }
 
   render() {
-    var languages = [
-      "All",
-      "JavaScript",
-      "Python",
-      "Ruby",
-      "Go",
-      "C#",
-      "Rust",
-      "CSS"
-    ];
-
     return (
-      <ul className="languages">
-        {languages.map(function(lang) {
-          return (
-            //  have to use .bind to pass lang to initial function
-            <li
-              onClick={this.updateLangage.bind(null, lang)}
-              style={
-                lang === this.state.selectedLanguage
-                  ? { color: "#EC53FF" }
-                  : null
-              }
-              key={lang}
-            >
-              {lang}
-            </li>
-          );
-        }, this)}
-      </ul>
+      <div>
+        <SelectLanguage
+          selectedLanguage={this.state.selectedLanguage}
+          onSelect={this.updateLangage}
+        />
+      </div>
     );
   }
 }
