@@ -49,6 +49,7 @@ class Popular extends React.Component {
     // in order for this.updateLanguage to be invoked correctly with the right context, we need to bind the 'this' keyword (returns a new function)this.updateLanguage so that it's always invoked correctly
     this.updateLangage = this.updateLangage.bind(this);
   }
+  //   method for updating the selected language state
   updateLangage(lang) {
     this.setState(function() {
       return {
