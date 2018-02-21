@@ -79,6 +79,7 @@ class Popular extends React.Component {
           selectedLanguage={this.state.selectedLanguage}
           onSelect={this.updateLangage}
         />
+        {JSON.stringify(this.state.repos, 2, null)}
       </div>
     );
   }
