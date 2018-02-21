@@ -38,7 +38,7 @@ function SelectLanguage(props) {
 function RepoGrid(props) {
   return (
     <ul className="popular-list">
-      {props.repos.map(function(repos, index) {
+      {props.repos.map(function(repo, index) {
         return (
           <li key={repo.name} className="popular-item">
             <div className="popular-rank">#{index + 1}</div>
@@ -47,14 +47,14 @@ function RepoGrid(props) {
                 <img
                   className="avatar"
                   src={repo.owner.avatar_url}
-                  alt={"Avatar for" + repo.owner.login}
+                  alt={"Avatar for " + repo.owner.login}
                 />
               </li>
               <li>
                 <a href={repo.html_url}>{repo.name}</a>
               </li>
               <li>@{repo.owner.login}</li>
-              <li>{repo.stargazer_count} stars</li>
+              <li>{repo.stargazers_count} stars</li>
             </ul>
           </li>
         );
