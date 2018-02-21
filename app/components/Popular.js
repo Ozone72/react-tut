@@ -34,7 +34,7 @@ function SelectLanguage(props) {
   );
 }
 
-// function to take in repos as props and return
+// function to take in repos as props and return gridded items
 function RepoGrid(props) {
   return (
     <ul className="popular-list">
