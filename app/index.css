@@ -106,6 +106,19 @@ a {
   text-decoration: none;
 }
 
+.reset {
+  border: none;
+  background: transparent;
+  color: #ec53ff;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.reset:hover {
+  cursor: pointer;
+}
+
 .row {
   display: flex;
   justify-content: space-around;
