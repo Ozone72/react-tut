@@ -105,3 +105,8 @@ a {
   background-image: linear-gradient(to bottom, #b73cfa, #7034d9);
   text-decoration: none;
 }
+
+.row {
+  display: flex;
+  justify-content: space-around;
+}
