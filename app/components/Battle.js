@@ -1,18 +1,39 @@
 var React = require("react");
 var PropTypes = require("prop-types");
 
-class PlayerInput extends Component {
+class PlayerInput extends React.Component {
+  // CONSTRUCTOR INSTANCE
   constructor(props) {
     super(props);
 
     this.state = {
       username: ""
     };
-  }
 
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  // METHODS
+  // this will handle the state change of the entering the usernames
+  handleChange(event) {
+    var value = event.target.value;
+
+    this.setState(function() {
+      return {
+        username: value
+      };
+    });
+  }
+  // this will handle the event of submitting the full form
+  handleSubmit(event) {
+    event.preventDefault();
+
+    this.props.onSubmit(this.props.id, this.state.username);
+  }
   render() {
     return (
-      <form className="column">
+      // rendering the form element
+      <form className="column" onSubmit={this.handleSubmit}>
         <label htmlFor="username" className="header">
           {this.props.label}
         </label>
@@ -24,6 +45,13 @@ class PlayerInput extends Component {
           value={this.state.username}
           onChange={this.handleChange}
         />
+        <button
+          className="button"
+          type="submit"
+          disabled={!this.state.username}
+        >
+          Submit
+        </button>
       </form>
     );
   }
@@ -34,6 +62,11 @@ PlayerInput.propTypes = {
   label: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired
 };
+
+PlayerInput.defaultProps = {
+  label: "Username"
+};
+
 class Battle extends React.Component {
   constructor(props) {
     super(props);
@@ -44,7 +77,7 @@ class Battle extends React.Component {
       playerTwoImage: null
     };
 
-    this.handleSubmit = this.state.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleSubmit(id, username) {
     this.setState(function() {
@@ -56,6 +89,9 @@ class Battle extends React.Component {
     });
   }
   render() {
+    var playerOneName = this.state.playerOneName;
+    var playerTwoName = this.state.playerTwoName;
+
     return (
       <div>
         <div className="row">
